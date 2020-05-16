@@ -32,3 +32,5 @@ describe("Vampire", function() {
 
   });
 });
+
+// console.log(rootVampire);
