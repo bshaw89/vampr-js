@@ -41,6 +41,18 @@ class Vampire {
     }
   }
 
+  /** Tree traversal methods **/
+
+  // Returns the vampire object with that name, or null if no vampire exists with that name
+  // vampireWithName(name) {
+    
+  // }
+
+  // Returns an array of all the vampires that were converted after 1980
+  get allMillennialVampires() {
+    
+  }
+
   /** Stretch **/
 
   // Returns the closest common ancestor of two vampires.
@@ -54,19 +66,52 @@ class Vampire {
 
    // Returns the vampire object with that name, or null if no vampire exists with that name
    vampireWithName(name) {
+     let currentVamp = {};
+    
+    if (this.name === name) {
+      currentVamp = this.name;
+    }
+    console.log(currentVamp);
 
-  }
+    for (const vamp of this.offspring) {
+      currentVamp = vamp.vampireWithName(name);
+    }
+    // return currentVamp;
+   }
 
   // Returns the total number of vampires that exist
   get totalDescendents() {
-
+    let brood = 0;
+    // console.log(this); 
+    for (const spawn of this.offspring) {
+      // console.log(descendent);
+      brood += spawn.totalDescendents + 1;
+    }
+    return brood;
   }
 
   // Returns an array of all the vampires that were converted after 1980
   get allMillennialVampires() {
-
+    // if this.yearConverted > 1980
   }
 }
+
+rootVampire = new Vampire("root");
+
+offspring1 = new Vampire("a");
+      offspring2 = new Vampire("b");
+      offspring3 = new Vampire("c");
+      offspring4 = new Vampire("d");
+      offspring5 = new Vampire("e");
+      offspring6 = new Vampire("f");
+      offspring7 = new Vampire("g");
+      offspring8 = new Vampire("h");
+
+      rootVampire.addOffspring(offspring1);
+      rootVampire.addOffspring(offspring2);
+      rootVampire.addOffspring(offspring3);
+
+console.log(rootVampire.vampireWithName("b"));
 
 module.exports = Vampire;
 
